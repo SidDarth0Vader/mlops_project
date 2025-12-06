@@ -1,6 +1,6 @@
 import uvicorn
 
-from config import SERVICE_PORT
+from src.config import SERVICE_PORT
 from src.fastapi.service import mlops_app
 
 
