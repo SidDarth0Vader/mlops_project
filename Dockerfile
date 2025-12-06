@@ -16,6 +16,6 @@ COPY src /app/src
 
 COPY main.py /app/
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["uv", "run", "main.py"]
