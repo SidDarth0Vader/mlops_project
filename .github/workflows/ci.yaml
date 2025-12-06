@@ -2,6 +2,8 @@ name: Deploy Images to GHCR
 
 on:
   push:
+    tags:
+      - 'v*.*.*'
     branches:
       - main
 
@@ -27,8 +29,8 @@ jobs:
 
       - name: 'Build Image'
         run: |
-          docker build . --tag ghcr.io/${{github.actor}}/mlops_project:latest
-      
+          docker build . --tag ghcr.io/${{ github.actor }}/mlops_project:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'latest' }}
+
       - name: 'Push image'
         run: |
-          docker push ghcr.io/${{github.actor}}/mlops_project:latest
+          docker push ghcr.io/${{ github.actor }}/mlops_project:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'latest' }}
