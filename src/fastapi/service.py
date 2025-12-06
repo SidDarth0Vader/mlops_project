@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 from src.config import SERVICE_VERSION
 
@@ -7,5 +9,6 @@ mlops_app = FastAPI(
 )
 
 @mlops_app.get("/")
-def home():
-    return {"message": "Welcome to the Sid's MLOPs project"}
+async def home() -> HTMLResponse:
+    with open("static/index.html", "rb") as f:
+        return HTMLResponse(content=f.read(), status_code=200)
