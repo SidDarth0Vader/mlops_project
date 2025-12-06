@@ -11,5 +11,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "dvc>=3.64.0",
     "pytest>=9.0.1",
 ]
