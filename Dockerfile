@@ -14,6 +14,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 COPY src /app/src
 
+COPY static /app/static
+
 COPY main.py /app/
 
 EXPOSE 80
